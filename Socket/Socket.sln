@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "Cons
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{064557A4-48E9-4663-A966-C5ED6D7F58C8}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "美女聊天室", "美女聊天室\美女聊天室.vdproj", "{BF499144-DEC2-45A3-A1A1-7936E1B7A416}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,12 @@ Global
 		{064557A4-48E9-4663-A966-C5ED6D7F58C8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{064557A4-48E9-4663-A966-C5ED6D7F58C8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{064557A4-48E9-4663-A966-C5ED6D7F58C8}.Release|x86.ActiveCfg = Release|Any CPU
+		{BF499144-DEC2-45A3-A1A1-7936E1B7A416}.Debug|Any CPU.ActiveCfg = Debug
+		{BF499144-DEC2-45A3-A1A1-7936E1B7A416}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{BF499144-DEC2-45A3-A1A1-7936E1B7A416}.Debug|x86.ActiveCfg = Debug
+		{BF499144-DEC2-45A3-A1A1-7936E1B7A416}.Release|Any CPU.ActiveCfg = Release
+		{BF499144-DEC2-45A3-A1A1-7936E1B7A416}.Release|Mixed Platforms.ActiveCfg = Release
+		{BF499144-DEC2-45A3-A1A1-7936E1B7A416}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
