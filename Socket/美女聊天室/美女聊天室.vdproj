@@ -21,26 +21,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_3FFB279F08EB3B6DC9BF591640AD42FC"
+        "MsmKey" = "8:_1A8842608F03F4B6C3A7C44EEE91DBB4"
         "OwnerKey" = "8:_1367692507414AECA5147F5CBCC0DD52"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_3FFB279F08EB3B6DC9BF591640AD42FC"
+        "MsmKey" = "8:_1A8842608F03F4B6C3A7C44EEE91DBB4"
         "OwnerKey" = "8:_6712C2F256C848F3BEBEED79C1B8F768"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_502104BAF4A7460A926E0AE363760683"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_51C6527FBB934F87A27049473548DBC0"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -51,19 +39,37 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_78D43D27DF97709F8F94296075A54145"
+        "MsmKey" = "8:_A5206040B25EF62CE6B7052AD2A91231"
         "OwnerKey" = "8:_1367692507414AECA5147F5CBCC0DD52"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_78D43D27DF97709F8F94296075A54145"
+        "MsmKey" = "8:_A5206040B25EF62CE6B7052AD2A91231"
         "OwnerKey" = "8:_6712C2F256C848F3BEBEED79C1B8F768"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_A7CE5D849D684466BCCBD50D4A49CA28"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C29E6D722D3F47BD8D32F134DECF9981"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CA266AAABA444769B903EACDE23411AC"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E4D4072005CD4ABBBDEE0C764FF71D7B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -76,7 +82,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3FFB279F08EB3B6DC9BF591640AD42FC"
+        "OwnerKey" = "8:_1367692507414AECA5147F5CBCC0DD52"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E6E80317984847E48238FE9304B41A62"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -94,19 +106,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E6E80317984847E48238FE9304B41A62"
+        "OwnerKey" = "8:_A5206040B25EF62CE6B7052AD2A91231"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1367692507414AECA5147F5CBCC0DD52"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_78D43D27DF97709F8F94296075A54145"
+        "OwnerKey" = "8:_1A8842608F03F4B6C3A7C44EEE91DBB4"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -127,6 +133,27 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0,Profile=Client"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4 Client Profile (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -143,6 +170,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -172,14 +207,14 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3FFB279F08EB3B6DC9BF591640AD42FC"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1A8842608F03F4B6C3A7C44EEE91DBB4"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_3FFB279F08EB3B6DC9BF591640AD42FC"
+                    "_1A8842608F03F4B6C3A7C44EEE91DBB4"
                     {
                     "Name" = "8:Common.dll"
                     "Attributes" = "3:512"
@@ -203,54 +238,14 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_502104BAF4A7460A926E0AE363760683"
-            {
-            "SourcePath" = "8:..\\Server\\bin\\Debug\\MidsummerColor1.ssk"
-            "TargetName" = "8:MidsummerColor1.ssk"
-            "Tag" = "8:"
-            "Folder" = "8:_8A4E08899F024F9480287C5E6F182AAC"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_51C6527FBB934F87A27049473548DBC0"
-            {
-            "SourcePath" = "8:..\\Client\\bin\\Debug\\MidsummerColor1.ssk"
-            "TargetName" = "8:MidsummerColor1.ssk"
-            "Tag" = "8:"
-            "Folder" = "8:_F90A8B89EE524BED83319BD926FED9D7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_78D43D27DF97709F8F94296075A54145"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A5206040B25EF62CE6B7052AD2A91231"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:IrisSkin2, Version=2006.3.22.45, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_78D43D27DF97709F8F94296075A54145"
+                    "_A5206040B25EF62CE6B7052AD2A91231"
                     {
                     "Name" = "8:IrisSkin2.dll"
                     "Attributes" = "3:512"
@@ -291,6 +286,66 @@
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_F90A8B89EE524BED83319BD926FED9D7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C29E6D722D3F47BD8D32F134DECF9981"
+            {
+            "SourcePath" = "8:..\\Server\\skin\\MidsummerColor1.ssk"
+            "TargetName" = "8:MidsummerColor1.ssk"
+            "Tag" = "8:"
+            "Folder" = "8:_F90A8B89EE524BED83319BD926FED9D7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CA266AAABA444769B903EACDE23411AC"
+            {
+            "SourcePath" = "8:..\\Server\\skin\\MidsummerColor1.ssk"
+            "TargetName" = "8:MidsummerColor1.ssk"
+            "Tag" = "8:"
+            "Folder" = "8:_8A4E08899F024F9480287C5E6F182AAC"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E4D4072005CD4ABBBDEE0C764FF71D7B"
+            {
+            "SourcePath" = "8:..\\Server\\skin\\MidsummerColor1.ssk"
+            "TargetName" = "8:MidsummerColor1.ssk"
+            "Tag" = "8:"
+            "Folder" = "8:_0D1F219A26E3455F870503FB2586F684"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -374,6 +429,17 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_0D1F219A26E3455F870503FB2586F684"
+                    {
+                    "Name" = "8:Skin"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_FCDB17491F1F416A847E5182FBD8F08C"
+                        "Folders"
+                        {
+                        }
+                    }
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_8A4E08899F024F9480287C5E6F182AAC"
                     {
                     "Name" = "8:服务端"
@@ -413,22 +479,22 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:美女聊天室"
+        "ProductName" = "8:ChatRoom"
         "ProductCode" = "8:{7E0F82EB-BBEA-46A6-AF59-C2A701567650}"
-        "PackageCode" = "8:{B36B7919-A9DA-46C0-8634-EAF067BF8ED6}"
+        "PackageCode" = "8:{B0A6A7AE-5048-44EE-A3E7-D7960A41049A}"
         "UpgradeCode" = "8:{74C64CA3-5669-4DC5-BA28-436E9C81FD8F}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
-        "InstallAllUsers" = "11:FALSE"
+        "InstallAllUsers" = "11:TRUE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:ChatRoom"
+        "Manufacturer" = "8:BaibyDo"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:美女聊天室"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:默认公司名称"
+        "ARPCONTACT" = "8:Baiby"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -535,6 +601,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_23C82BD288B04110AF6E2AB64050229B"
+            {
+            "Name" = "8:Client"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_6712C2F256C848F3BEBEED79C1B8F768"
+            "Folder" = "8:_00C20BC6F1CB436782052F25DEF421BE"
+            "WorkingFolder" = "8:_F90A8B89EE524BED83319BD926FED9D7"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_C7593BF484E04EA79009171953A86C02"
             {
             "Name" = "8:Server"
@@ -545,6 +625,20 @@
             "Transitive" = "11:FALSE"
             "Target" = "8:_1367692507414AECA5147F5CBCC0DD52"
             "Folder" = "8:_D18A29A6549244EF8DBAEEAEC7FC39E6"
+            "WorkingFolder" = "8:_8A4E08899F024F9480287C5E6F182AAC"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_CAA462033A4B4E5AAD74A76066BD5CF2"
+            {
+            "Name" = "8:Server"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_1367692507414AECA5147F5CBCC0DD52"
+            "Folder" = "8:_00C20BC6F1CB436782052F25DEF421BE"
             "WorkingFolder" = "8:_8A4E08899F024F9480287C5E6F182AAC"
             "Icon" = "8:"
             "Feature" = "8:"

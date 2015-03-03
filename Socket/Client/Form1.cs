@@ -13,12 +13,9 @@ using System.Collections;
 using System.IO;
 using Common;
 
-namespace Client
-{
-    public partial class Form1 : Form
-    {
-        public Form1()
-        {
+namespace Client {
+    public partial class Form1 : Form {
+        public Form1 () {
             InitializeComponent();
             TextBox.CheckForIllegalCrossThreadCalls = false;
             skinEngine1.SkinFile = "MidsummerColor1.ssk";
@@ -27,8 +24,7 @@ namespace Client
         Socket socketClient = null;
         string localName;
 
-        private void btnConnection_Click(object sender, EventArgs e)
-        {
+        private void btnConnection_Click ( object sender, EventArgs e ) {
             ConnectionServer connectionserver = new ConnectionServer("127.0.0.1", "5555");
             socketClient = connectionserver.Connection2Server();
             this.lblUid.Text = localName = socketClient.LocalEndPoint.ToString();
@@ -41,28 +37,22 @@ namespace Client
 
         bool receiveFlag = true;
 
-        private void ReceiveMsg()
-        {
-            try
-            {
-                while (receiveFlag)
-                {
-                    byte[] bytes = new byte[1024 * 1024 * 2];
+        private void ReceiveMsg () {
+            try {
+                while (receiveFlag) {
+                    byte [] bytes = new byte [1024 * 1024 * 2];
                     socketClient.Receive(bytes);
                     string receiveMsg = Encoding.UTF8.GetString(bytes);
                     MessageMod mod = new MessageMod(receiveMsg);
-                    switch (mod.MsgType)
-                    {
+                    switch (mod.MsgType) {
                         case (int)Common.PubClass.MsgType.Client2Client:
                             this.txtReceived.AppendTxt(string.Format("【{0}】发来:{1}", mod.FromUser, mod.Content));
                             break;
                         case (int)Common.PubClass.MsgType.RadioClients:
                             lstFriends.Items.Clear();
-                            string[] strs = mod.Content.Split('^');
-                            foreach (var item in strs)
-                            {
-                                if (!this.lstFriends.Items.Contains(item) && item != socketClient.LocalEndPoint.ToString())
-                                {
+                            string [] strs = mod.Content.Split('^');
+                            foreach (var item in strs) {
+                                if (!this.lstFriends.Items.Contains(item) && item != socketClient.LocalEndPoint.ToString()) {
                                     this.lstFriends.Items.Add(item);
                                 }
                             }
@@ -73,14 +63,14 @@ namespace Client
                             receiveFlag = false;
                             System.Timers.Timer tim = new System.Timers.Timer(3000);
                             tim.Enabled = true;
-                            tim.Elapsed += (object sender, System.Timers.ElapsedEventArgs e) => { this.Close(); };
+                            tim.Elapsed += ( object sender, System.Timers.ElapsedEventArgs e ) => { this.Close(); };
                             break;
                         case (int)Common.PubClass.MsgType.ServerClosed:
                             socketClient.Close();
                             this.txtReceived.AppendTxt("服务器连接失败,3秒后关闭客户端...");
                             System.Timers.Timer timer = new System.Timers.Timer(3000);
                             timer.Enabled = true;
-                            timer.Elapsed += (object sender, System.Timers.ElapsedEventArgs e) => { this.Close(); };
+                            timer.Elapsed += ( object sender, System.Timers.ElapsedEventArgs e ) => { this.Close(); };
                             break;
                         case (int)Common.PubClass.MsgType.JY:
                             this.txtReceived.AppendTxt(mod.Content);
@@ -94,18 +84,13 @@ namespace Client
                             break;
                         case (int)Common.PubClass.MsgType.Client2ClientFile:
                             if (MessageBox.Show("是否接收？", mod.FromUser + "发来文件", MessageBoxButtons.YesNoCancel)
-            == System.Windows.Forms.DialogResult.Yes)
-                            {
-                                if (sfgDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                                {
-                                    using (FileStream fs = new FileStream(sfgDialog.FileName, FileMode.Create))
-                                    {
+            == System.Windows.Forms.DialogResult.Yes) {
+                                if (sfgDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+                                    using (FileStream fs = new FileStream(sfgDialog.FileName, FileMode.Create)) {
                                         fs.Write(mod.ContentBytes, 0, mod.ContentBytes.Length);
                                         txtReceived.AppendTxt("收到一个文件" + sfgDialog.FileName);
                                     }
-                                }
-                                else
-                                {
+                                } else {
                                     txtReceived.AppendTxt("取消接受文件" + sfgDialog.FileName);
                                 }
                             }
@@ -113,27 +98,26 @@ namespace Client
                         case (int)Common.PubClass.MsgType.ShineScreen:
                             ShakeWindow();
                             break;
+                        case (int)Common.PubClass.MsgType.Server2ClientMsg:
+                            this.txtReceived.AppendTxt(string.Format("管理员发来消息:{0}", mod.Content));
+                            break;
                     }
                 }
-            }
-            catch
-            {
+            } catch {
                 MessageBox.Show("服务器连接失败,3秒后关闭客户端...");
                 System.Timers.Timer timer = new System.Timers.Timer(3000);
                 timer.Enabled = true;
-                timer.Elapsed += (object sender, System.Timers.ElapsedEventArgs e) => { this.Close(); };
+                timer.Elapsed += ( object sender, System.Timers.ElapsedEventArgs e ) => { this.Close(); };
 
             }
         }
 
-        private void btnSendMsg_Click(object sender, EventArgs e)
-        {
+        private void btnSendMsg_Click ( object sender, EventArgs e ) {
             string SelectFriend = GetSelectClient();
             if (SelectFriend.Length == 0) return;
             if (txtMessage.Text.Length == 0) { MessageBox.Show("聊天信息为空"); return; }
 
-            if (receiveFlag)
-            {
+            if (receiveFlag) {
                 MessageMod mod = new MessageMod();
                 mod.MsgType = (int)Common.PubClass.MsgType.Client2Client;
                 mod.FromUser = localName;
@@ -143,38 +127,29 @@ namespace Client
                 txtReceived.AppendTxt(string.Format("【你】对【{0}】说:{1}", mod.ToUser, mod.Content));
                 this.txtMessage.Text = "";
 
-            }
-            else
-            {
+            } else {
                 MessageBox.Show("服务器已停止响应！");
             }
         }
 
-        private string GetSelectClient()
-        {
-            if (lstFriends.SelectedItem != null)
-            {
+        private string GetSelectClient () {
+            if (lstFriends.SelectedItem != null) {
                 return lstFriends.SelectedItem.ToString();
-            }
-            else
-            {
+            } else {
                 MessageBox.Show("请选择一个好友"); return "";
             }
         }
 
-        private void btnSendFile_Click(object sender, EventArgs e)
-        {
+        private void btnSendFile_Click ( object sender, EventArgs e ) {
             string SelectFriend = GetSelectClient();
             if (SelectFriend.Length == 0) return;
             string fileName = txtFilePath.Text;
-            if (string.IsNullOrEmpty(fileName))
-            {
+            if (string.IsNullOrEmpty(fileName)) {
                 MessageBox.Show("请选择文件"); return;
             }
             MessageMod mod = new MessageMod();
-            using (FileStream fs = new FileStream(fileName, FileMode.Open))
-            {
-                byte[] byts = new byte[1024 * 1024 * 2];
+            using (FileStream fs = new FileStream(fileName, FileMode.Open)) {
+                byte [] byts = new byte [1024 * 1024 * 2];
                 fs.Read(byts, 0, (int)fs.Length);
                 mod.ContentBytes = byts;
             }
@@ -186,17 +161,14 @@ namespace Client
 
         }
 
-        private void btnChooseFile_Click(object sender, EventArgs e)
-        {
-            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
+        private void btnChooseFile_Click ( object sender, EventArgs e ) {
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
                 this.txtFilePath.Text = openFileDialog.FileName;
                 this.txtFilePath.Enabled = false;
             }
         }
 
-        private void btnShake_Click(object sender, EventArgs e)
-        {
+        private void btnShake_Click ( object sender, EventArgs e ) {
             string SelectFriend = GetSelectClient();
             if (SelectFriend.Length == 0) return;
             MessageMod mod = new MessageMod();
@@ -207,14 +179,12 @@ namespace Client
             socketClient.Send(mod.ToBytes());
         }
 
-        public void ShakeWindow()
-        {
+        public void ShakeWindow () {
             if (this.WindowState == FormWindowState.Minimized)
                 this.WindowState = FormWindowState.Normal;
             Random ran = new Random();
             System.Drawing.Point point = this.Location;
-            for (int i = 0; i < 30; i++)
-            {
+            for (int i = 0 ; i < 30 ; i++) {
                 this.Location = new System.Drawing.Point(point.X + ran.Next(5), point.Y + ran.Next(5));
                 System.Threading.Thread.Sleep(15);
                 this.Location = point;

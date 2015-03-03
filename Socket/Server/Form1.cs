@@ -191,7 +191,7 @@ namespace Server
         private void btnSendAll_Click(object sender, EventArgs e)
         {
             string msg = this.txtSend.Text;
-            Server2ClientMsg("all", msg, true);
+            Server2AllClientMsg(msg, PubClass.MsgType.Server2ClientMsg);
         }
 
         private void Server2AllClientMsg(string msg, Common.PubClass.MsgType type)
