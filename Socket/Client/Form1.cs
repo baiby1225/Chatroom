@@ -38,7 +38,9 @@ namespace Client
             thrReceived.SetApartmentState(ApartmentState.STA);
             thrReceived.Start();
         }
+
         bool receiveFlag = true;
+
         private void ReceiveMsg()
         {
             try
@@ -79,7 +81,6 @@ namespace Client
                             System.Timers.Timer timer = new System.Timers.Timer(3000);
                             timer.Enabled = true;
                             timer.Elapsed += (object sender, System.Timers.ElapsedEventArgs e) => { this.Close(); };
-
                             break;
                         case (int)Common.PubClass.MsgType.JY:
                             this.txtReceived.AppendTxt(mod.Content);
@@ -110,12 +111,7 @@ namespace Client
                             }
                             break;
                         case (int)Common.PubClass.MsgType.ShineScreen:
-
-
                             ShakeWindow();
-
-
-
                             break;
                     }
                 }
@@ -204,9 +200,10 @@ namespace Client
             mod.MsgType = (int)Common.PubClass.MsgType.ShineScreen;
             mod.FromUser = localName;
             mod.ToUser = SelectFriend;
-            mod.Content = "Shake";
+            mod.Content = "闪死你~";
             socketClient.Send(mod.ToBytes());
         }
+
         public void ShakeWindow()
         {
             Random ran = new Random();

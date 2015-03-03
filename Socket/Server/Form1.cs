@@ -33,14 +33,8 @@ namespace Server
         //监听消息线程
         Thread thrReadRec = null;
 
-        //接收文件socket
-        Socket socketFileServer = null;
-
-        //监听文件线程
-        Thread thrFileRec = null;
         //客户端列表
         Dictionary<string, Socket> dictClients = new Dictionary<string, Socket>();
-
 
         int maxCount = 0;
         private void btnBeginListen_Click(object sender, EventArgs e)
@@ -260,8 +254,6 @@ namespace Server
         }
 
         #endregion
-
-
 
         private void btnPause_Click(object sender, EventArgs e)
         {
