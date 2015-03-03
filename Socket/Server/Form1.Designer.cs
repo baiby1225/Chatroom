@@ -39,8 +39,6 @@
             this.txtSend = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.chkAlConnect = new System.Windows.Forms.CheckBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.btnSaveLog = new System.Windows.Forms.Button();
             this.btnClearLog = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -48,8 +46,6 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnPause = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.txtSerFilePort = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.cboMaxCount = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -72,6 +68,7 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.skinEngine1 = new Sunisoft.IrisSkin.SkinEngine(((System.ComponentModel.Component)(this)));
+            this.btnShankAll = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -134,6 +131,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnShankAll);
             this.groupBox4.Controls.Add(this.btnSendAll);
             this.groupBox4.Controls.Add(this.btnSend);
             this.groupBox4.Controls.Add(this.txtSend);
@@ -186,8 +184,6 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.chkAlConnect);
-            this.tabPage1.Controls.Add(this.label8);
             this.tabPage1.Controls.Add(this.btnSaveLog);
             this.tabPage1.Controls.Add(this.btnClearLog);
             this.tabPage1.Controls.Add(this.groupBox5);
@@ -202,27 +198,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "服务器管理";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // chkAlConnect
-            // 
-            this.chkAlConnect.AutoSize = true;
-            this.chkAlConnect.Checked = true;
-            this.chkAlConnect.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkAlConnect.Location = new System.Drawing.Point(248, 388);
-            this.chkAlConnect.Name = "chkAlConnect";
-            this.chkAlConnect.Size = new System.Drawing.Size(48, 16);
-            this.chkAlConnect.TabIndex = 18;
-            this.chkAlConnect.Text = "连接";
-            this.chkAlConnect.UseVisualStyleBackColor = true;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(176, 390);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 12);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "允许用户：";
             // 
             // btnSaveLog
             // 
@@ -286,8 +261,6 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.txtSerFilePort);
-            this.groupBox6.Controls.Add(this.label9);
             this.groupBox6.Controls.Add(this.label10);
             this.groupBox6.Controls.Add(this.cboMaxCount);
             this.groupBox6.Controls.Add(this.label7);
@@ -309,23 +282,6 @@
             this.groupBox6.TabIndex = 11;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "服务器信息";
-            // 
-            // txtSerFilePort
-            // 
-            this.txtSerFilePort.Location = new System.Drawing.Point(78, 188);
-            this.txtSerFilePort.Name = "txtSerFilePort";
-            this.txtSerFilePort.Size = new System.Drawing.Size(71, 21);
-            this.txtSerFilePort.TabIndex = 16;
-            this.txtSerFilePort.Text = "5555";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(76, 172);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(65, 12);
-            this.label9.TabIndex = 15;
-            this.label9.Text = "文件端口：";
             // 
             // label10
             // 
@@ -400,7 +356,7 @@
             // 
             this.txtSerPort.Location = new System.Drawing.Point(9, 188);
             this.txtSerPort.Name = "txtSerPort";
-            this.txtSerPort.Size = new System.Drawing.Size(63, 21);
+            this.txtSerPort.Size = new System.Drawing.Size(140, 21);
             this.txtSerPort.TabIndex = 7;
             this.txtSerPort.Text = "5555";
             // 
@@ -529,6 +485,16 @@
             this.skinEngine1.SerialNumber = "";
             this.skinEngine1.SkinFile = null;
             // 
+            // btnShankAll
+            // 
+            this.btnShankAll.Location = new System.Drawing.Point(325, 93);
+            this.btnShankAll.Name = "btnShankAll";
+            this.btnShankAll.Size = new System.Drawing.Size(61, 32);
+            this.btnShankAll.TabIndex = 9;
+            this.btnShankAll.Text = "群闪~";
+            this.btnShankAll.UseVisualStyleBackColor = true;
+            this.btnShankAll.Click += new System.EventHandler(this.btnShankAll_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -546,7 +512,6 @@
             this.groupBox4.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
@@ -573,8 +538,6 @@
         private System.Windows.Forms.Button btnJY;
         private System.Windows.Forms.Button btnTR;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.CheckBox chkAlConnect;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnSaveLog;
         private System.Windows.Forms.Button btnClearLog;
         private System.Windows.Forms.GroupBox groupBox5;
@@ -600,8 +563,7 @@
         private System.Windows.Forms.Button btnCancelJY;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private Sunisoft.IrisSkin.SkinEngine skinEngine1;
-        private System.Windows.Forms.TextBox txtSerFilePort;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnShankAll;
     }
 }
 

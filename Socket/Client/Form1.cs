@@ -131,6 +131,7 @@ namespace Client
             string SelectFriend = GetSelectClient();
             if (SelectFriend.Length == 0) return;
             if (txtMessage.Text.Length == 0) { MessageBox.Show("聊天信息为空"); return; }
+
             if (receiveFlag)
             {
                 MessageMod mod = new MessageMod();
@@ -139,7 +140,9 @@ namespace Client
                 mod.ToUser = SelectFriend;
                 mod.Content = this.txtMessage.Text;
                 socketClient.Send(mod.ToBytes());
+                txtReceived.AppendTxt(string.Format("【你】对【{0}】说:{1}", mod.ToUser, mod.Content));
                 this.txtMessage.Text = "";
+
             }
             else
             {
@@ -206,6 +209,8 @@ namespace Client
 
         public void ShakeWindow()
         {
+            if (this.WindowState == FormWindowState.Minimized)
+                this.WindowState = FormWindowState.Normal;
             Random ran = new Random();
             System.Drawing.Point point = this.Location;
             for (int i = 0; i < 30; i++)

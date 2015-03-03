@@ -322,6 +322,11 @@ namespace Server
 
         }
 
+        private void btnShankAll_Click(object sender, EventArgs e)
+        {
+            Server2AllClientMsg("闪你们~", PubClass.MsgType.ShineScreen);
+        }
+
 
     }
 }
