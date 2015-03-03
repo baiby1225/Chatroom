@@ -21,6 +21,7 @@ namespace Client
         {
             InitializeComponent();
             TextBox.CheckForIllegalCrossThreadCalls = false;
+            skinEngine1.SkinFile = "MidsummerColor1.ssk";
         }
 
         Socket socketClient = null;

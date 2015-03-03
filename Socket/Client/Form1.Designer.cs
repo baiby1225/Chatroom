@@ -38,13 +38,14 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.lstFriends = new System.Windows.Forms.ListBox();
             this.sfgDialog = new System.Windows.Forms.SaveFileDialog();
+            this.skinEngine1 = new Sunisoft.IrisSkin.SkinEngine(((System.ComponentModel.Component)(this)));
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnConnection
             // 
-            this.btnConnection.Location = new System.Drawing.Point(373, 4);
+            this.btnConnection.Location = new System.Drawing.Point(373, 15);
             this.btnConnection.Name = "btnConnection";
             this.btnConnection.Size = new System.Drawing.Size(90, 23);
             this.btnConnection.TabIndex = 0;
@@ -55,16 +56,17 @@
             // lblUid
             // 
             this.lblUid.AutoSize = true;
-            this.lblUid.Location = new System.Drawing.Point(102, 9);
+            this.lblUid.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblUid.Location = new System.Drawing.Point(113, 15);
             this.lblUid.Name = "lblUid";
-            this.lblUid.Size = new System.Drawing.Size(47, 12);
+            this.lblUid.Size = new System.Drawing.Size(63, 22);
             this.lblUid.TabIndex = 2;
             this.lblUid.Text = "未连接.";
             // 
             // lable
             // 
             this.lable.AutoSize = true;
-            this.lable.Location = new System.Drawing.Point(31, 9);
+            this.lable.Location = new System.Drawing.Point(29, 20);
             this.lable.Name = "lable";
             this.lable.Size = new System.Drawing.Size(65, 12);
             this.lable.TabIndex = 5;
@@ -101,7 +103,7 @@
             this.groupBox3.Controls.Add(this.txtReceived);
             this.groupBox3.Controls.Add(this.btnSendMsg);
             this.groupBox3.Controls.Add(this.txtMessage);
-            this.groupBox3.Location = new System.Drawing.Point(210, 33);
+            this.groupBox3.Location = new System.Drawing.Point(210, 57);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(278, 392);
             this.groupBox3.TabIndex = 10;
@@ -111,7 +113,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.lstFriends);
-            this.groupBox4.Location = new System.Drawing.Point(11, 33);
+            this.groupBox4.Location = new System.Drawing.Point(11, 57);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(193, 392);
             this.groupBox4.TabIndex = 11;
@@ -130,16 +132,22 @@
             this.lstFriends.Size = new System.Drawing.Size(187, 372);
             this.lstFriends.TabIndex = 0;
             // 
+            // skinEngine1
+            // 
+            this.skinEngine1.SerialNumber = "";
+            this.skinEngine1.SkinFile = null;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 433);
+            this.ClientSize = new System.Drawing.Size(504, 474);
             this.Controls.Add(this.btnConnection);
             this.Controls.Add(this.lable);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.lblUid);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Form1";
             this.Text = "Client";
             this.groupBox3.ResumeLayout(false);
@@ -162,6 +170,7 @@
         private System.Windows.Forms.ListBox lstFriends;
         private System.Windows.Forms.SaveFileDialog sfgDialog;
         private System.Windows.Forms.Label lable;
+        private Sunisoft.IrisSkin.SkinEngine skinEngine1;
     }
 }
 

@@ -23,6 +23,7 @@ namespace Server
 
             ComboBox.CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
+            skinEngine1.SkinFile = "MidsummerColor1.ssk";
         }
 
 
@@ -150,6 +151,7 @@ namespace Server
             {
                 string connName = socketConn.RemoteEndPoint.ToString();
                 this.txtLog.AppendTxt(connName + "下线啦~");
+                txtNowCount.Text = (int.Parse(txtNowCount.Text) - 1).ToString();
                 dictClients.Remove(connName);
                 this.lstClient.Items.Remove(connName);
             }
@@ -343,7 +345,7 @@ namespace Server
                 {
                     byte[] byts = Encoding.UTF8.GetBytes(txtLog.Text);
                     fs.Write(byts, 0, byts.Length);
-                    MessageBox.Show("日志保存成功"+saveFileDialog.FileName);
+                    MessageBox.Show("日志保存成功" + saveFileDialog.FileName);
                 }
             }
 

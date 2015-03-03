@@ -45,10 +45,6 @@
             this.txtFilePath = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btnTR = new System.Windows.Forms.Button();
-            this.btnJY = new System.Windows.Forms.Button();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.chkAlConnect = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnSaveLog = new System.Windows.Forms.Button();
@@ -73,18 +69,23 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtStatu = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnCancelJY = new System.Windows.Forms.Button();
+            this.btnJY = new System.Windows.Forms.Button();
+            this.btnTR = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.skinEngine1 = new Sunisoft.IrisSkin.SkinEngine(((System.ComponentModel.Component)(this)));
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnBeginListen
@@ -93,7 +94,7 @@
             this.btnBeginListen.Name = "btnBeginListen";
             this.btnBeginListen.Size = new System.Drawing.Size(38, 23);
             this.btnBeginListen.TabIndex = 0;
-            this.btnBeginListen.Text = "开始监听";
+            this.btnBeginListen.Text = "开始";
             this.btnBeginListen.UseVisualStyleBackColor = true;
             this.btnBeginListen.Click += new System.EventHandler(this.btnBeginListen_Click);
             // 
@@ -262,53 +263,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "服务器管理";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.btnCancelJY);
-            this.tabPage2.Controls.Add(this.btnJY);
-            this.tabPage2.Controls.Add(this.btnTR);
-            this.tabPage2.Controls.Add(this.groupBox3);
-            this.tabPage2.Controls.Add(this.groupBox2);
-            this.tabPage2.Controls.Add(this.groupBox4);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(777, 447);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "用户管理";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // btnTR
-            // 
-            this.btnTR.Location = new System.Drawing.Point(8, 383);
-            this.btnTR.Name = "btnTR";
-            this.btnTR.Size = new System.Drawing.Size(61, 23);
-            this.btnTR.TabIndex = 9;
-            this.btnTR.Text = "踢人";
-            this.btnTR.UseVisualStyleBackColor = true;
-            this.btnTR.Click += new System.EventHandler(this.btnTR_Click);
-            // 
-            // btnJY
-            // 
-            this.btnJY.Location = new System.Drawing.Point(9, 412);
-            this.btnJY.Name = "btnJY";
-            this.btnJY.Size = new System.Drawing.Size(61, 23);
-            this.btnJY.TabIndex = 10;
-            this.btnJY.Text = "禁言";
-            this.btnJY.UseVisualStyleBackColor = true;
-            this.btnJY.Click += new System.EventHandler(this.btnJY_Click);
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.groupBox1);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(772, 341);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
-            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // chkAlConnect
             // 
@@ -552,6 +506,22 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "状态：";
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.btnCancelJY);
+            this.tabPage2.Controls.Add(this.btnJY);
+            this.tabPage2.Controls.Add(this.btnTR);
+            this.tabPage2.Controls.Add(this.groupBox3);
+            this.tabPage2.Controls.Add(this.groupBox2);
+            this.tabPage2.Controls.Add(this.groupBox4);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(777, 447);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "用户管理";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
             // btnCancelJY
             // 
             this.btnCancelJY.Location = new System.Drawing.Point(81, 412);
@@ -562,9 +532,45 @@
             this.btnCancelJY.UseVisualStyleBackColor = true;
             this.btnCancelJY.Click += new System.EventHandler(this.btnCancelJY_Click);
             // 
+            // btnJY
+            // 
+            this.btnJY.Location = new System.Drawing.Point(9, 412);
+            this.btnJY.Name = "btnJY";
+            this.btnJY.Size = new System.Drawing.Size(61, 23);
+            this.btnJY.TabIndex = 10;
+            this.btnJY.Text = "禁言";
+            this.btnJY.UseVisualStyleBackColor = true;
+            this.btnJY.Click += new System.EventHandler(this.btnJY_Click);
+            // 
+            // btnTR
+            // 
+            this.btnTR.Location = new System.Drawing.Point(8, 383);
+            this.btnTR.Name = "btnTR";
+            this.btnTR.Size = new System.Drawing.Size(61, 23);
+            this.btnTR.TabIndex = 9;
+            this.btnTR.Text = "踢人";
+            this.btnTR.UseVisualStyleBackColor = true;
+            this.btnTR.Click += new System.EventHandler(this.btnTR_Click);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.groupBox1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(777, 447);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
             // saveFileDialog
             // 
             this.saveFileDialog.FileName = "log.txt";
+            // 
+            // skinEngine1
+            // 
+            this.skinEngine1.SerialNumber = "";
+            this.skinEngine1.SkinFile = null;
             // 
             // Form1
             // 
@@ -572,6 +578,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(785, 473);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Form1";
             this.Text = "Server";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -585,12 +592,12 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -644,6 +651,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCancelJY;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private Sunisoft.IrisSkin.SkinEngine skinEngine1;
     }
 }
 
