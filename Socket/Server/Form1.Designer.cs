@@ -37,12 +37,6 @@
             this.btnSendAll = new System.Windows.Forms.Button();
             this.btnSend = new System.Windows.Forms.Button();
             this.txtSend = new System.Windows.Forms.TextBox();
-            this.opfileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnOpenFile = new System.Windows.Forms.Button();
-            this.btnSendFileAll = new System.Windows.Forms.Button();
-            this.btnSendFile = new System.Windows.Forms.Button();
-            this.txtFilePath = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.chkAlConnect = new System.Windows.Forms.CheckBox();
@@ -54,6 +48,8 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnPause = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.txtSerFilePort = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.cboMaxCount = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -79,13 +75,11 @@
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnBeginListen
@@ -177,61 +171,6 @@
             this.txtSend.Name = "txtSend";
             this.txtSend.Size = new System.Drawing.Size(528, 67);
             this.txtSend.TabIndex = 2;
-            // 
-            // opfileDialog
-            // 
-            this.opfileDialog.FileName = "log.txt";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.btnOpenFile);
-            this.groupBox1.Controls.Add(this.btnSendFileAll);
-            this.groupBox1.Controls.Add(this.btnSendFile);
-            this.groupBox1.Controls.Add(this.txtFilePath);
-            this.groupBox1.Location = new System.Drawing.Point(106, 42);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(536, 82);
-            this.groupBox1.TabIndex = 9;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "发送给客户端的文件";
-            // 
-            // btnOpenFile
-            // 
-            this.btnOpenFile.Location = new System.Drawing.Point(469, 0);
-            this.btnOpenFile.Name = "btnOpenFile";
-            this.btnOpenFile.Size = new System.Drawing.Size(61, 21);
-            this.btnOpenFile.TabIndex = 9;
-            this.btnOpenFile.Text = "打开文件";
-            this.btnOpenFile.UseVisualStyleBackColor = true;
-            this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
-            // 
-            // btnSendFileAll
-            // 
-            this.btnSendFileAll.Location = new System.Drawing.Point(469, 52);
-            this.btnSendFileAll.Name = "btnSendFileAll";
-            this.btnSendFileAll.Size = new System.Drawing.Size(61, 21);
-            this.btnSendFileAll.TabIndex = 8;
-            this.btnSendFileAll.Text = "群发文件";
-            this.btnSendFileAll.UseVisualStyleBackColor = true;
-            this.btnSendFileAll.Click += new System.EventHandler(this.btnSendFileAll_Click);
-            // 
-            // btnSendFile
-            // 
-            this.btnSendFile.Location = new System.Drawing.Point(469, 26);
-            this.btnSendFile.Name = "btnSendFile";
-            this.btnSendFile.Size = new System.Drawing.Size(61, 21);
-            this.btnSendFile.TabIndex = 7;
-            this.btnSendFile.Text = "发送";
-            this.btnSendFile.UseVisualStyleBackColor = true;
-            this.btnSendFile.Click += new System.EventHandler(this.btnSendFile_Click);
-            // 
-            // txtFilePath
-            // 
-            this.txtFilePath.Location = new System.Drawing.Point(0, 20);
-            this.txtFilePath.Multiline = true;
-            this.txtFilePath.Name = "txtFilePath";
-            this.txtFilePath.Size = new System.Drawing.Size(463, 35);
-            this.txtFilePath.TabIndex = 2;
             // 
             // tabControl1
             // 
@@ -347,6 +286,8 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.txtSerFilePort);
+            this.groupBox6.Controls.Add(this.label9);
             this.groupBox6.Controls.Add(this.label10);
             this.groupBox6.Controls.Add(this.cboMaxCount);
             this.groupBox6.Controls.Add(this.label7);
@@ -368,6 +309,23 @@
             this.groupBox6.TabIndex = 11;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "服务器信息";
+            // 
+            // txtSerFilePort
+            // 
+            this.txtSerFilePort.Location = new System.Drawing.Point(78, 188);
+            this.txtSerFilePort.Name = "txtSerFilePort";
+            this.txtSerFilePort.Size = new System.Drawing.Size(71, 21);
+            this.txtSerFilePort.TabIndex = 16;
+            this.txtSerFilePort.Text = "5555";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(76, 172);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(65, 12);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "文件端口：";
             // 
             // label10
             // 
@@ -442,7 +400,7 @@
             // 
             this.txtSerPort.Location = new System.Drawing.Point(9, 188);
             this.txtSerPort.Name = "txtSerPort";
-            this.txtSerPort.Size = new System.Drawing.Size(140, 21);
+            this.txtSerPort.Size = new System.Drawing.Size(63, 21);
             this.txtSerPort.TabIndex = 7;
             this.txtSerPort.Text = "5555";
             // 
@@ -451,9 +409,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(7, 172);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 12);
+            this.label4.Size = new System.Drawing.Size(65, 12);
             this.label4.TabIndex = 6;
-            this.label4.Text = "端口：";
+            this.label4.Text = "消息端口：";
             // 
             // txtSerIP
             // 
@@ -554,7 +512,6 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.groupBox1);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -587,8 +544,6 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -597,7 +552,6 @@
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -613,12 +567,6 @@
         private System.Windows.Forms.TextBox txtSend;
         private System.Windows.Forms.Button btnSendAll;
         private System.Windows.Forms.ListBox lstClient;
-        private System.Windows.Forms.OpenFileDialog opfileDialog;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnSendFileAll;
-        private System.Windows.Forms.Button btnSendFile;
-        private System.Windows.Forms.TextBox txtFilePath;
-        private System.Windows.Forms.Button btnOpenFile;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -652,6 +600,8 @@
         private System.Windows.Forms.Button btnCancelJY;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private Sunisoft.IrisSkin.SkinEngine skinEngine1;
+        private System.Windows.Forms.TextBox txtSerFilePort;
+        private System.Windows.Forms.Label label9;
     }
 }
 

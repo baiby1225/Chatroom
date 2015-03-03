@@ -54,37 +54,16 @@ namespace Client
                         case (int)Common.PubClass.MsgType.Client2Client:
                             this.txtReceived.AppendTxt(string.Format("【{0}】发来:{1}", mod.FromUser, mod.Content));
                             break;
-                        case (int)Common.PubClass.MsgType.Server2ClientMsg:
-                            this.txtReceived.AppendTxt(string.Format("【{0}】发来:{1}", mod.FromUser, mod.Content)); break;
-                        case (int)Common.PubClass.MsgType.Server2ClientFile:
-                            if (MessageBox.Show("是否接收？", "管理员发来文件", MessageBoxButtons.YesNoCancel)
-                                == System.Windows.Forms.DialogResult.Yes)
-                            {
-                                if (sfgDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                                {
-                                    using (FileStream fs = new FileStream(sfgDialog.FileName, FileMode.Create))
-                                    {
-                                        byte[] filebytes = Encoding.UTF8.GetBytes(mod.Content);
-                                        fs.Write(filebytes, 0, filebytes.Length);
-                                        txtReceived.AppendTxt("收到一个文件~");
-                                        MessageBox.Show("保存成功");
-
-                                    }
-                                }
-                            }
-                            break;
                         case (int)Common.PubClass.MsgType.RadioClients:
                             lstFriends.Items.Clear();
                             string[] strs = mod.Content.Split('^');
                             foreach (var item in strs)
                             {
-
                                 if (!this.lstFriends.Items.Contains(item) && item != socketClient.LocalEndPoint.ToString())
                                 {
                                     this.lstFriends.Items.Add(item);
                                 }
                             }
-
                             break;
                         case (int)Common.PubClass.MsgType.TR:
                             this.txtReceived.AppendTxt(mod.Content);
@@ -112,10 +91,33 @@ namespace Client
                             this.btnSendMsg.Enabled = true;
                             this.txtMessage.BackColor = Color.White;
                             break;
+                        case (int)Common.PubClass.MsgType.Client2ClientFile:
+                            if (MessageBox.Show("是否接收？", mod.FromUser + "发来文件", MessageBoxButtons.YesNoCancel)
+            == System.Windows.Forms.DialogResult.Yes)
+                            {
+                                if (sfgDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                                {
+                                    using (FileStream fs = new FileStream(sfgDialog.FileName, FileMode.Create))
+                                    {
+                                        fs.Write(mod.ContentBytes, 0, mod.ContentBytes.Length);
+                                        txtReceived.AppendTxt("收到一个文件" + sfgDialog.FileName);
+                                    }
+                                }
+                                else
+                                {
+                                    txtReceived.AppendTxt("取消接受文件" + sfgDialog.FileName);
+                                }
+                            }
+                            break;
+                        case (int)Common.PubClass.MsgType.ShineScreen:
 
 
+                            ShakeWindow();
+
+
+
+                            break;
                     }
-
                 }
             }
             catch
@@ -128,16 +130,11 @@ namespace Client
             }
         }
 
-
-
         private void btnSendMsg_Click(object sender, EventArgs e)
         {
-
             string SelectFriend = GetSelectClient();
             if (SelectFriend.Length == 0) return;
-
             if (txtMessage.Text.Length == 0) { MessageBox.Show("聊天信息为空"); return; }
-
             if (receiveFlag)
             {
                 MessageMod mod = new MessageMod();
@@ -152,14 +149,10 @@ namespace Client
             {
                 MessageBox.Show("服务器已停止响应！");
             }
-
-
-
         }
 
         private string GetSelectClient()
         {
-
             if (lstFriends.SelectedItem != null)
             {
                 return lstFriends.SelectedItem.ToString();
@@ -167,6 +160,63 @@ namespace Client
             else
             {
                 MessageBox.Show("请选择一个好友"); return "";
+            }
+        }
+
+        private void btnSendFile_Click(object sender, EventArgs e)
+        {
+            string SelectFriend = GetSelectClient();
+            if (SelectFriend.Length == 0) return;
+            string fileName = txtFilePath.Text;
+            if (string.IsNullOrEmpty(fileName))
+            {
+                MessageBox.Show("请选择文件"); return;
+            }
+            MessageMod mod = new MessageMod();
+            using (FileStream fs = new FileStream(fileName, FileMode.Open))
+            {
+                byte[] byts = new byte[1024 * 1024 * 2];
+                fs.Read(byts, 0, (int)fs.Length);
+                mod.ContentBytes = byts;
+            }
+            mod.MsgType = (int)Common.PubClass.MsgType.Client2ClientFile;
+            mod.FromUser = localName;
+            mod.ToUser = SelectFriend;
+            mod.Content = fileName;
+            socketClient.Send(mod.ToBytes());
+
+        }
+
+        private void btnChooseFile_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                this.txtFilePath.Text = openFileDialog.FileName;
+                this.txtFilePath.Enabled = false;
+            }
+        }
+
+        private void btnShake_Click(object sender, EventArgs e)
+        {
+            string SelectFriend = GetSelectClient();
+            if (SelectFriend.Length == 0) return;
+            MessageMod mod = new MessageMod();
+            mod.MsgType = (int)Common.PubClass.MsgType.ShineScreen;
+            mod.FromUser = localName;
+            mod.ToUser = SelectFriend;
+            mod.Content = "Shake";
+            socketClient.Send(mod.ToBytes());
+        }
+        public void ShakeWindow()
+        {
+            Random ran = new Random();
+            System.Drawing.Point point = this.Location;
+            for (int i = 0; i < 30; i++)
+            {
+                this.Location = new System.Drawing.Point(point.X + ran.Next(5), point.Y + ran.Next(5));
+                System.Threading.Thread.Sleep(15);
+                this.Location = point;
+                System.Threading.Thread.Sleep(15);
             }
         }
     }

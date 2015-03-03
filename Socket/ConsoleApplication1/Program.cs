@@ -23,7 +23,10 @@ namespace ConsoleApplication1
             byte[] bytClient = new byte[2];
             bytClient[0] = byte.Parse("53");
 
-            var  xx = Encoding.UTF8.GetString(bytClient);
+            string xx = Encoding.UTF8.GetString(bytClient);
+            byte[] byts = Encoding.UTF8.GetBytes(xx);
+
+            string xxx = string.Format("{0}|{1}|{2}|{3}|{4}", "a", "b", "c", "d", Encoding.UTF8.GetString(byts));
 
             Console.ReadKey();
         }

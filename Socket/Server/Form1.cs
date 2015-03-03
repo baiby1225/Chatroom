@@ -27,13 +27,21 @@ namespace Server
         }
 
 
-        //监听socket
+        //服务器socket
         Socket socketServer = null;
 
+        //监听消息线程
+        Thread thrReadRec = null;
+
+        //接收文件socket
+        Socket socketFileServer = null;
+
+        //监听文件线程
+        Thread thrFileRec = null;
         //客户端列表
         Dictionary<string, Socket> dictClients = new Dictionary<string, Socket>();
 
-        Thread thrReadRec = null;
+
         int maxCount = 0;
         private void btnBeginListen_Click(object sender, EventArgs e)
         {
@@ -44,6 +52,7 @@ namespace Server
             IPEndPoint ipendpoint = new IPEndPoint(ipaddress, int.Parse(txtSerPort.Text.ToString()));
             socketServer.Bind(ipendpoint);
             socketServer.Listen(maxCount);
+
             //创建线程 负责监听
             Thread threadWatch = new Thread(WatchConnection);
             //设置为后台线程
@@ -52,8 +61,6 @@ namespace Server
             threadWatch.Start();
             this.txtLog.AppendTxt("Server is Listening....");
             this.btnBeginListen.Enabled = false;
-
-
 
         }
 
@@ -108,7 +115,7 @@ namespace Server
             mod.FromUser = socketServer.LocalEndPoint.ToString();
             mod.ToUser = "all";
             mod.Content = clients;
-
+            mod.ContentBytes = new byte[1];
             foreach (var item in dictClients)
             {
                 item.Value.Send(mod.ToBytes());
@@ -125,6 +132,7 @@ namespace Server
                 {
                     byte[] bytes = new byte[1024 * 1024 * 2];
                     socketConn.Receive(bytes);
+
                     string receiveMsg = Encoding.UTF8.GetString(bytes);
                     MessageMod mod = new MessageMod(receiveMsg);
                     switch (mod.MsgType)
@@ -143,8 +151,16 @@ namespace Server
                             string clientName = socketConn.RemoteEndPoint.ToString();
                             this.txtServerState.AppendTxt(clientName + "对你说" + receiveMsg + "\r\n");
                             break;
+                        case (int)Common.PubClass.MsgType.Client2ClientFile:
+                            txtServerState.AppendTxt(string.Format("【{0}】给【{1}】发送了一个文件:【{2}】", mod.FromUser, mod.ToUser, mod.Content));
+                            SendFile(mod, false);
+                            txtServerState.AppendTxt("发送完成,文件大小：" + mod.ContentBytes.Length.ToString() + "kb");
+                            break;
+                        case (int)Common.PubClass.MsgType.ShineScreen:
+                            txtServerState.AppendTxt(string.Format("【{0}】给【{1}】发送了一个闪屏", mod.FromUser, mod.ToUser));
+                            Server2ClientMsg(mod.ToUser, mod.Content, false, PubClass.MsgType.ShineScreen);
+                            break;
                     }
-
                 }
             }
             catch
@@ -197,6 +213,7 @@ namespace Server
             mod.FromUser = socketServer.LocalEndPoint.ToString();
             mod.ToUser = toUser;
             mod.Content = msg;
+            mod.ContentBytes = new byte[1];
             byte[] bytes = mod.ToBytes();
             txtServerState.AppendTxt("【" + txtSerName.Text + "】" + "发给" + "【" + mod.ToUser + "】" + ":" + msg);
             foreach (KeyValuePair<string, Socket> item in dictClients)
@@ -221,68 +238,30 @@ namespace Server
 
         #region 发送文件
 
-        private void btnSendFile_Click(object sender, EventArgs e)
+        private void SendFile(MessageMod mod, bool isAll)
         {
-            SendFile(false);
-        }
-
-        private void btnSendFileAll_Click(object sender, EventArgs e)
-        {
-            SendFile(true);
-        }
-
-        private void SendFile(bool isAll)
-        {
-            if (lstClient.SelectedItem == null && !isAll)
+            byte[] byts = mod.ToBytes();
+            foreach (KeyValuePair<string, Socket> item in dictClients)
             {
-                MessageBox.Show("请选择一个客户端");
-            }
-            else
-            {
-                if (txtFilePath.Text.Trim().Length <= 0)
+                if (isAll)
                 {
-                    MessageBox.Show("请选择文件"); return;
+                    item.Value.Send(byts);
                 }
-                string path = txtFilePath.Text.Trim();
-                using (FileStream fs = new FileStream(path, FileMode.Open))
+                else
                 {
-                    byte[] bytes = new byte[1024 * 1024 * 2];
-                    fs.Read(bytes, 0, (int)fs.Length - 1);
-                    byte[] bytefinal = new byte[bytes.Length + 1];
-                    bytefinal[0] = (int)Common.PubClass.MsgType.Server2ClientFile;
-                    Buffer.BlockCopy(bytes, 0, bytefinal, 1, bytefinal.Length - 1);
-
-
-                    foreach (KeyValuePair<string, Socket> item in dictClients)
+                    if (item.Key == mod.ToUser)
                     {
-                        if (isAll)
-                        {
-                            item.Value.Send(bytefinal);
-                        }
-                        else
-                        {
-                            if (item.Key == lstClient.SelectedItem.ToString())
-                            {
-                                item.Value.Send(bytefinal);
+                        item.Value.Send(byts);
 
-                            }
-                        }
-                        this.txtFilePath.Enabled = true;
                     }
-
                 }
+
             }
         }
+
         #endregion
 
-        private void btnOpenFile_Click(object sender, EventArgs e)
-        {
-            if (opfileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                this.txtFilePath.Text = opfileDialog.FileName;
-                this.txtFilePath.Enabled = false;
-            }
-        }
+
 
         private void btnPause_Click(object sender, EventArgs e)
         {
@@ -350,5 +329,7 @@ namespace Server
             }
 
         }
+
+
     }
 }

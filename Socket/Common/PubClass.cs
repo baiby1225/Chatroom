@@ -19,7 +19,9 @@ namespace Common
             TR = 7,
             JY = 8,
             CancelJY = 9,
-            Other = 10
+            Client2ClientFile = 10,
+            ShineScreen = 11,
+            Other = 12
         }
     }
 
